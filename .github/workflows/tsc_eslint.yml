@@ -1,0 +1,22 @@
+on:
+  push:
+
+jobs:
+  tsc-eslint:
+    name: tsc compilation and ESLint check
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 18.16.1
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.16.1
+    - name: Install dependencies
+      working-directory: .
+      run: npm install
+    - name: Run TypeScript compilation
+      working-directory: .
+      run: npx tsc --noEmit
+    - name: Run ESLint check
+      working-directory: .
+      run: npx eslint src/** --quiet
