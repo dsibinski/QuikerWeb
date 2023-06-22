@@ -5,6 +5,9 @@ import React, { useEffect, useState } from "react";
 export const TasksList = () => {
   const [tasks, setTasks] = useState<TodoTask[] | null>(null);
 
+  const useMe = () => {
+    console.log("asd");
+  };
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/Tasks/All`)
       .then((tasksResut) => {

@@ -1,0 +1,10 @@
+{
+   "tasks": [
+      {
+         "name": "Run Prettier formatting",
+         "command": "npx",
+         "args": ["prettier", "--ignore-unknown", "--write", "${staged}"],
+         "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+      }
+   ]
+}
