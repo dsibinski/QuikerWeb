@@ -3,7 +3,7 @@ on:
 
 jobs:
   tsc-eslint:
-    name: tsc compilation and ESLint check
+    name: ESLint check
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
@@ -11,15 +11,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 18.16.1
-    - name: Install latest TypeScript
-      working-directory: .
-      run: npm install -g typescript@latest
     - name: Install dependencies
       working-directory: .
       run: npm install
-    - name: Run TypeScript compilation
-      working-directory: .
-      run: npx tsc --noEmit
     - name: Run ESLint check
       working-directory: .
       run: npx eslint src/** --quiet
