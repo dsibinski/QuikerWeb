@@ -2,7 +2,7 @@ import { TodoTask } from "@/types/todoTask";
 
 async function getSampleTasks() {
   const url = `${process.env.API_URL}/Tasks/All`;
-  const result = await fetch(url);
+  const result = await fetch(url, { cache: "no-store" });
 
   if (!result.ok) {
     throw new Error("Failed to fetch data");
