@@ -1,24 +1,17 @@
-"use client";
 import { TodoTask } from "@/types/todoTask";
-import React, { useEffect, useState } from "react";
 
-export const TasksList = () => {
-  const [tasks, setTasks] = useState<TodoTask[] | null>(null);
+async function getSampleTasks() {
+  const result = await fetch(`https://localhost:44349/Tasks/All`);
 
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/Tasks/All`)
-      .then((tasksResut) => {
-        tasksResut
-          .json()
-          .then((tasksResultJson) => {
-            setTasks(tasksResultJson);
-          })
-          .catch((err) => alert(err));
-      })
-      .catch((error) => {
-        alert("There was an error during fetch: " + error);
-      });
-  }, []);
+  if (!result.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return result.json();
+}
+
+export const TasksList = async () => {
+  const tasks: TodoTask[] = await getSampleTasks();
 
   if (tasks === null) {
     return <p>Loading...</p>;
