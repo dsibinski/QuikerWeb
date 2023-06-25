@@ -11,6 +11,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 18.16.1
+    - name: Install latest TypeScript
+      working-directory: .
+      run: npm install -g typescript@latest
     - name: Install dependencies
       working-directory: .
       run: npm install
