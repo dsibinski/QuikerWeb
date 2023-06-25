@@ -1,4 +1,4 @@
-import { TodoTask } from "@/types/todoTask";
+import { TodoTask } from "@/common/types/todoTask";
 
 async function getSampleTasks() {
   const url = `${process.env.API_URL}/Tasks/All`;
