@@ -6,14 +6,15 @@ jobs:
     name: ESLint check
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 18.16.1
-      uses: actions/setup-node@v2
-      with:
-        node-version: 18.16.1
-    - name: Install dependencies
-      working-directory: .
-      run: npm install
-    - name: Run ESLint check
-      working-directory: .
-      run: npx eslint src/** --quiet
+      - uses: actions/checkout@v1
+      - name: Use Node.js 18.16.1
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.16.1
+      - name: Install dependencies
+        working-directory: .
+        run: npm install
+      - name: Run ESLint check
+        working-directory: .
+        run: npx eslint --ext js,jsx,ts,tsx src --quiet
+
