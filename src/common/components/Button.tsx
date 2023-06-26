@@ -1,12 +1,12 @@
 type ButtonProps = {
-  label: string;
+  children: React.ReactNode;
   onClick?: () => void;
 };
 
-export const Button = ({ label, onClick }: ButtonProps) => {
+export const Button = ({ children, onClick }: ButtonProps) => {
   return (
     <input type="button" onClick={onClick}>
-      {label}
+      {children}
     </input>
   );
 };

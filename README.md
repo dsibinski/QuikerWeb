@@ -5,4 +5,4 @@ NextJS app, created with `create-next-app`.
 
 # Environment variables
 
-NEXT_PUBLIC_API_URL - API URL
+API_URL - API URL (used on the server)

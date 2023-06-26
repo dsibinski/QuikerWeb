@@ -1,3 +1,5 @@
+import Link from "next/link";
+import "./tasks.css";
 import { TodoTask } from "@/common/types/todoTask";
 
 async function getSampleTasks() {
@@ -14,20 +16,33 @@ async function getSampleTasks() {
 export const TasksList = async () => {
   const tasks: TodoTask[] = await getSampleTasks();
 
-  if (tasks === null) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <>
-      <div>Your tasks:</div>
-      <ul>
+      <div style={{ paddingBottom: "1rem" }}>Your tasks:</div>
+      <table>
+        <tr>
+          <th>Task name</th>
+          <th>Due date</th>
+          <th></th>
+        </tr>
         {tasks.map((task) => (
-          <li key={task.id}>{`${task.name}, due date: ${new Date(
-            task.dueDate
-          ).toLocaleString()}`}</li>
+          <tr key={task.id}>
+            <td>{task.name}</td>
+            <td>${new Date(task.dueDate).toLocaleString()}</td>
+            <td>
+              <Link href={`/tasks/${task.id}`}>Details</Link>
+            </td>
+          </tr>
         ))}
-      </ul>
+      </table>
+
+      {/* <ul>
+        {tasks.map((task) => (
+          <li key={task.id}>
+            <>{`${task.name}, due date: ${new Date(task.dueDate).toLocaleString()}`}</>
+          </li>
+        ))}
+      </ul> */}
     </>
   );
 };
