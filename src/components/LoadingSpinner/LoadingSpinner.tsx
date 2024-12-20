@@ -1,6 +1,10 @@
 import { Spinner } from "react-bootstrap";
 
 export function LoadingSpinner({ center }: { center?: boolean }) {
+  const someNiceThing = 5;
+
+  const loadingText = "Loading...";
+
   return (
     <div
       className={
@@ -10,7 +14,7 @@ export function LoadingSpinner({ center }: { center?: boolean }) {
       }
     >
       <Spinner animation="border" role="output" variant="success">
-        <span className="visually-hidden">Loading...</span>
+        <span className="visually-hidden">loadingText</span>
       </Spinner>
     </div>
   );
